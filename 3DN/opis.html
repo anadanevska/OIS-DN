@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>3. DN :: OIS 2020/2021</title>
+  <link href="knjiznice/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {padding-top: 70px;}
+  </style>
+  <link rel="icon" href="./favicon.png"/>
+  <script src="knjiznice/js/jquery-2.2.3.min.js"></script>
+  <script src="knjiznice/js/bootstrap.min.js"></script>
+  <script src="knjiznice/js/koda.js"></script>
+</head>
+<body>
+
+  <!-- ZAČETEK: Menujska vrstica na vrhu spletne strani -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menujska-vrstica">
+          <span class="sr-only">Prikaži menu</span>
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <!-- ZAČETEK: Ime vaše aplikacije -->
+        <a class="navbar-brand" href="index.html">Covid-19 TravelAdvisor</a>
+        <!-- KONEC: Ime vaše aplikacije -->
+      </div>
+      <div class="collapse navbar-collapse" id="menujska-vrstica">
+        <ul class="nav navbar-nav">
+          <li><a href="opis.html">Opis ideje</a></li>
+          <li><a href="nacrt.html">Načrt informacijske rešitve</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- KONEC: Menujska vrstica na vrhu spletne strani -->
+
+  <!-- ZAČETEK: Opis delovanja aplikacije -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="background-color: khaki;">
+            <h3 class="panel-title">Opis ideje, ki jo aplikacija podpira</h3>
+          </div>
+          <div class="panel-body">
+            <!-- ZAČETEK: Opis ideje, ki jo aplikacija podpira -->
+            <h5 style="font-weight: bold;">SCENARIJ UPORABE</h5>
+            <p>Uporabnik izbere svoj EHRid zapis iz seznama, ali ga vnese v ustrezno polje. 
+            Na desni strani se izriše graf s podatkov o njegovih vitalnih znakih skozi čas. 
+            Potem na vstrezno polje izbere državo v katero bi želel potovati. 
+            Na desni strani, se izpiše seznam: koliko okuženih je bilo v tej državi do zdaj, koliko novih slučajev ima in številka smrtnosti.
+            Pacient naj izbere ali je okužen z virusom, ali je že imel Covid-19, in ali je že cepljen/a.
+            Pri klik na gumb "Should I Travel?" se spodaj izpiše nasvet, naj pacient potuje ali pa ne.
+            Tudi se izpišejo Varnostni Ukrepi.
+           </p>
+            <h5 style="font-weight: bold;">CILJNA PUBLIKA:</h5>
+            <p>Pacienti, ki bi radi v bližnji prihodnosti potovali v tujino.</p>
+            <h5 style="font-weight: bold;">NAMEN APLIKACIJE</h5>
+            <p>Aplikacija se uporablja za pregled vitalnih znakov skozi čas, 
+              ter svetovanje pacienta ki želijo potovati v tujino.</p>
+            <!-- KONEC: Opis ideje, ki jo aplikacija podpira -->
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" style="background-color: khaki;">
+            <h3 class="panel-title">Uporabljeni zunanji viri podatkov</h3>
+          </div>
+          <div class="panel-body">
+            <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
+            <h5 style="font-weight: bold;">UPORABLJENI ZUNANJI VIR</h5>
+            <p>Teaching API (<a href="https://teaching.lavbic.net/api/OIS" target="_blank">https://teaching.lavbic.net/api/OIS</a>)<br>
+            COVID19 API (<a href="https://covid19api.com" target="_blank">https://covid19api.com</a>)<br>
+          </p>
+            <h5 style="font-weight: bold;">NAMEN UPORABE</h5>
+            <p>~ Teaching API sem uporabila za dodajanje pacienta v bazo in pridobivanje podatkov o določenem pacientu.</p>
+            <p>~ Zunanji vir COVID19 sem uporabila za pridobivanje podatkov o število okuženih z COVID-19 v določeni državi. 
+            Te podatke sem uporabila za obračun ali je varno za potovanje ali pa ne, ter prikaz informacije za doslej okuženih.
+            </p>
+            <p style="font-style: italic;">(Podatke iz vira sem dobila z neposredni API klic.)</p>
+            <p>~ Datoteko worldpopulation.js sem napisala sama iz podatkov s spleta in uvozila.
+               Podatki so mi bili potrebni za izračun procentov aktivnih slučajev.
+              </p>
+            <!-- KONEC: Uporabljeni zunanji viri podatkov -->
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" style="background-color: khaki;">
+            <h3 class="panel-title">Master/detail načrtovalski vzorec</h3>
+          </div>
+          <div class="panel-body">
+            <!-- ZAČETEK: Master/detail načrtovalski vzorec -->
+            <p>Master/detail vzorec sem uporabila, tko da je master seznam državah, in detail so podatki o število okužbi in smrtnosti.</p>
+            <!-- KONEC: Master/detail načrtovalski vzorec -->
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" style="background-color: khaki;">
+            <h3 class="panel-title">Uporabljena tehnika za vizualizacijo podatkov</h3>
+          </div>
+          <div class="panel-body">
+            <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
+            <p>Za prikaz vitalnih podatkov pacienta sem izbrala <it>line chart</it> in <it>column chart</it>,
+              ker mislim da so vstrezne za podane podatke. Vporabila sem knjižnico <a href="https://canvasjs.com/" target="_blank">CanvasJS</a>.</p>
+            <!-- KONEC: Uporabljeni zunanji viri podatkov -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- KONEC: Opis delovanja aplikacije -->
+
+</body>
+</html>

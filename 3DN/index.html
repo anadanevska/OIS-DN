@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>3. DN :: OIS 2020/2021</title>
+  <link href="knjiznice/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {padding-top: 70px;}
+  </style>
+	<link rel="icon" href="./favicon.png"/>
+  <script src="knjiznice/js/jquery-2.2.3.min.js"></script>
+  <script src="knjiznice/js/bootstrap.min.js"></script>
+  <script src="knjiznice/js/koda.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script type="text/javascript" src="worldpopulation.js"></script>
+</head>
+<body>
+  @media screen and (max-width: 992px) {
+    .main_panel {
+        margin-top: 50px;
+    }
+}
+  <!-- ZAČETEK: Menujska vrstica na vrhu spletne strani -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menujska-vrstica">
+          <span class="sr-only">Prikaži menu</span>
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <!-- ZAČETEK: Ime vaše aplikacije -->
+        <a class="navbar-brand" href="index.html">Covid-19 TravelAdvisor</a>
+        <!-- KONEC: Ime vaše aplikacije -->
+      </div>
+      <div class="collapse navbar-collapse" id="menujska-vrstica">
+        <ul class="nav navbar-nav">
+          <li><a href="opis.html">Opis ideje</a></li>
+          <li><a href="nacrt.html">Načrt informacijske rešitve</a></li>
+          <li onclick="generirajVsePodatke()"><a href="#" >Generiranje podatkov</a></li>
+          <li><a href="https://ropsten.etherscan.io/address/0x69feac7cd6a9f75f39794b570e1b169f459ab76e" target="_blank">Blockchain certifikat kakovosti</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- KONEC: Menujska vrstica na vrhu spletne strani -->
+
+  <!-- ZAČETEK: Vsebina aplikacije -->
+  
+  <div class="container">
+    <div class="row">
+      <div class="col col-xs-6" style="text-align: center;">
+        <!--EHRid -->
+        <div class="panel panel-info">
+          <div class="panel-heading" style="background-color: khaki;">
+              <h5 style="text-align:center; font-weight: bold;">Enter an EHR or choose one from the listed below!</h5>
+          </div>
+            <div class="panel-body" id="pacienti">
+              <div>
+                <select class="form-control" size="3" id="izberiPacient">
+                </select><br>
+              </div>
+              <div>
+                <input id="EHRInput" type="text" class="form-control input-mini" placeholder="Enter an EHR"><br>
+              </div>
+            </div>
+            <div>
+              <p id="podatki"></p>
+            </div>
+        </div>
+      </div>
+      <!--Graph-->
+      <div class="col-xs-6" style="text-align: center;">
+        <div class="row d-flex justify-content-center mt-5">
+          <div class="col-xs-6" style="height:300px">
+            <div class="" id="prv">
+              <div class="panel-body" style="height:300px">
+                <div id="first" style="height: 100%; width: 100%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6" style="height:300px">
+            <div class="" id="vtor">
+              <div class="panel-body" style="height:300px">
+                <div id="second" style="height: 100%; width: 100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col  col-xs-6">
+          <!--Countries -->
+          <div class="panel panel-info " >
+            <div class="panel-heading" style="background-color: khaki;">
+                <h5 style="text-align:center; font-weight: bold;">Which country do you want to travel to?</h5>
+            </div>
+              <div class="panel-body" id="zemja">
+                  <div class = "">
+                      <select class="form-control input-sm" id="drzavi"></select>
+                  </div>
+                </div>
+                <div>
+                  <p style="text-align: left; text-indent: 10px;">Are you infected with Covid-19 now?
+                    <input type="checkbox" id="now"></p>
+                  <p style="text-align: left; text-indent: 10px;">Did you have Covid-19 in the last 6 months?
+                    <input type="checkbox" id="before"></p>
+                  <p style="text-align: left; text-indent: 10px;">Have you been vaccinated?
+                    <input type="checkbox" id="vaccine"></p>
+                </div>
+              </div>
+              <p align="left">
+              <button id="generirajNasvet" style="background-color: lightgoldenrodyellow; border-color: white;">Should I Travel?</button>
+            </p>
+            <p id="justInCase"></p>
+            </div>
+        <div class="col  col-xs-6">
+          <!--Countries stats-->
+          <div class="panel panel-info ">
+            <div class="panel-heading" style="background-color: khaki;">
+              <h5 style="text-align:center; font-weight: bold;">Country statistics:</h5>
+            </div>
+            <div class="panel-body" id="stats">
+              <ul class="list-group">
+                <li class="list-group-item" id="total"></li>
+                <li class="list-group-item" id="active"></li>
+                <li class="list-group-item" id="dead"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <div class="container">
+    <div class="row ">
+      <div class="col-lg-12 " style="text-align: center;">
+        <div class="panel panel info" style="margin-top: 15px;">
+          <div class="" id="nasvet">
+          </div>
+          <div id="safety"></div>
+          <div id="warning"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- KONEC: Vsebina aplikacije --> 
+</body>
+</html>
